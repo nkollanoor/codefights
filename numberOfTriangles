@@ -1,0 +1,16 @@
+### https://codefights.com/challenge/xQgo34A4XR2qAqPEM ###
+
+
+
+
+
+def numberOfTriangles2(sticks):
+    count=0
+    for i in range (0,len(sticks)):
+        for j in range (0,len(sticks)):
+            for k in range (0,len(sticks)):
+                if i!=j and j!=k and i!=k:
+                    if sticks[i]+sticks[j]>sticks[k] and sticks[j]+sticks[k]>sticks[i] and sticks[i]+sticks[k]>sticks[j]:
+                        count=count+1
+                        
+    return int(count/6)
