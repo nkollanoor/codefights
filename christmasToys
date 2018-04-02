@@ -1,0 +1,30 @@
+https://codefights.com/challenge/RHD48pZQdohiBQjLa
+
+
+
+def christmasToys(toys):
+    def findchild(parents,toys,k):
+        if not parents:
+            return k
+        b=[]
+        for elem in parents:
+            b.extend(toys[elem])
+        k.append(b)
+        return findchild(b,toys,k)
+            
+        
+    p=[]
+    for elem in toys:
+        for elem1 in elem:
+            p.append(elem1)
+    i=0
+    while(True):
+        if i not in p:
+            l_0=i
+            break
+        i+=1
+    parents=[l_0]
+    k=[[l_0]]
+    fin=findchild(parents,toys,k)
+    return fin[:-1]
+            
