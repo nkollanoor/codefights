@@ -1,0 +1,9 @@
+### https://codefights.com/challenge/LyTYTjZBNHTLBMkrv ###
+
+
+
+
+def areaOne(r, l):
+    import math
+    if l<=math.pi*r:
+        return ((math.pi*l*l/2)+((l**3)/(3*r)))/2
