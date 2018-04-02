@@ -1,0 +1,6 @@
+### https://codefights.com/challenge/e4WsjPauPaZi6m8SG ###
+
+
+
+def findP(m):
+    return m**3/8
