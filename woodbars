@@ -1,0 +1,13 @@
+### https://codefights.com/challenge/L88rChJkL4FxRExi2  ###
+
+
+def woodBars(bars):
+        def gcd(a, b):
+                while b > 0:
+                        a, b = b, a % b
+                return a
+
+        result = bars[0]
+        for i in bars[1:]:
+                result = gcd(result, i)
+        return result
