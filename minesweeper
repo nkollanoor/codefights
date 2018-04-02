@@ -1,0 +1,34 @@
+### https://codefights.com/challenge/48o3YSHdmHtWRTxNT ###
+
+
+def minesweeper(matrix):
+    fin=[]
+    def check(i,j,r,c):
+        b=[]
+        p=[[i,j+1],[i,j-1],[i+1,j],[i-1,j],[i-1,j+1],[i-1,j-1],[i+1,j+1],[i+1,j-1]]
+        for elem in p:
+            if elem[0]<0 or elem[1]<0 or elem[0]>=r or elem[1]>=c:
+                foo=5
+            else:
+                b.append(elem)
+        return b
+                
+                
+    r=len(matrix)
+    c=len(matrix[0])
+    for i in range(0,r):
+        l=[]
+        for j in range(0,c):
+            b=check(i,j,r,c)
+            alpha=[]
+            for elem in b:
+                alpha.append(matrix[elem[0]][elem[1]])
+            beta=alpha.count(True)
+            l.append(beta)
+        fin.append(l)
+    return fin
+            
+            
+                
+                
+                
