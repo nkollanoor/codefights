@@ -1,0 +1,10 @@
+### https://codefights.com/challenge/Pbt5rHp85NqPkLm4y ###
+
+
+def hitman(people):
+    import math
+    i=len(people)
+    b=math.floor(math.log2(i))
+    j=int(2**b)
+    return people[((i-j)*2)-1]
+        
