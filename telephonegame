@@ -1,0 +1,10 @@
+### https://codefights.com/challenge/6RSivQPsn59o8YQWw ###
+
+
+def telephoneGame(messages):
+    x=set()
+    for i in range(0,len(messages)):
+        x.add(messages[i])
+        if len(x)>1:
+            return i
+    return -1
