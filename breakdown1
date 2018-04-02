@@ -1,0 +1,19 @@
+### https://codefights.com/challenge/u9YFDa2WYbbCqWSzv ###
+
+
+
+
+def breakDown1(arr):
+    g=[]
+    def gcd(m,n):
+        if n==0:
+            return m
+        else:
+            return gcd(n,m%n)
+    for elem in arr:
+        for elem1 in arr:
+            if elem!=elem1:
+                if gcd(elem,elem1)!=1:
+                    return False
+    return True
+
