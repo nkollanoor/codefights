@@ -1,0 +1,9 @@
+### https://codefights.com/challenge/nKzvoBRt6yX79SEsW ##
+
+
+
+def squaresNeeded(squares, circles, percentage):
+    p=percentage
+    c=circles
+    s=squares
+    return ((p*(s+c))-(100*s))/(100-p)
