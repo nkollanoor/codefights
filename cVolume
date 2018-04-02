@@ -1,0 +1,21 @@
+### https://codefights.com/challenge/5KoJvjuBKSeBwWe54 ###
+
+
+
+
+def cVolume(r, l, m):
+    import math
+    if r==0:
+        return 0
+    if m<=r:
+        A=((r**2)*(math.acos((r-m)/r)))-((r-m)*math.sqrt((2*r*m-m*m)))
+        V=A*l
+        return V
+    else:
+        m=2*r-m
+        A=((r**2)*(math.acos((r-m)/r)))-((r-m)*math.sqrt((2*r*m-m*m)))
+        A=math.pi*r*r-A
+        V=A*l
+        return V
+    
+
