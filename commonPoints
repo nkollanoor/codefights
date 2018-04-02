@@ -1,0 +1,5 @@
+### https://codefights.com/challenge/pgQanNcBvsqhRcqpF ###
+
+
+def commonPoints(l1, r1, l2, r2):
+    return len(set([i for i in range(l1+1,r1)]).intersection(set([i for i in range(l2+1,r2)])))
