@@ -1,0 +1,24 @@
+### https://codefights.com/challenge/r7bErxjna9MKs8ush ###
+
+
+
+def hq9plus(program):
+    ans=""
+    def _99():
+        s="99 bottles of beer on the wall,\n99 bottles of beer.\nTake one down, pass it around,\n98 bottles of beer on the wall.\n"
+        for i in range(98,2,-1):
+            s=s+"\n"+str(i)+" bottles of beer on the wall,\n"+str(i)+" bottles of beer.\nTake one down, pass it around,\n"+str(i-1)+" bottles of beer on the wall.\n"
+        s=s+"\n2 bottles of beer on the wall,\n2 bottles of beer.\nTake one down, pass it around,\n1 bottle of beer on the wall.\n\n1 bottle of beer on the wall,\n1 bottle of beer.\nGo to the store and buy some more,\n99 bottles of beer on the wall."
+        return s
+        
+    x=program
+    for elem in x:
+        if elem=="H":
+            ans=ans+"hello, world"
+        if elem=="Q":
+            ans=ans+x
+        if elem=="9":
+            ans=ans+_99()
+        if elem=="+":
+            ans=ans+""
+    return ans
