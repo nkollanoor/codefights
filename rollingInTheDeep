@@ -1,0 +1,105 @@
+### https://codefights.com/challenge/iCvWzbzkukDgoaMD5 ###
+
+
+
+
+
+
+
+
+
+def rollingInTheDeep(s):
+    try:
+        n=math.ceil(math.sqrt(len(s)))
+        ans=[]
+        def right(p):
+            return [[p[0],p[1]+1],"right"]
+        def up(p):
+            return [[p[0]-1,p[1]],"up"]
+        def left(p):
+            return [[p[0],p[1]-1],"left"]
+        def down(p):
+            return [[p[0]+1,p[1]],"down"]
+        
+        #Starting Point and empty matrix
+        
+        if n%2==0:
+            start=[int(n/2),int(n/2)-1]
+        else:
+            start=[math.floor(n/2),math.floor(n/2)]
+        fill=[[-1 for i in range(n)] for i in range(n)]
+        
+        #Logic- implement a bot that parses inside out like a snake; c- current position
+        
+        ans.append(start)
+        fill[start[0]][start[1]]="f"
+        c=right(start)
+        ans.append(c[0])
+        counter=1
+        while(True):
+            while(c[1]=="right"):
+                fill[c[0][0]][c[0][1]]="f"
+                check=up([c[0][0],c[0][1]])
+                if fill[check[0][0]][check[0][1]]==-1:
+                    c=up(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+                else:
+                    c=right(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+            while(c[1]=="up"):
+                fill[c[0][0]][c[0][1]]="f"
+                check=left([c[0][0],c[0][1]])
+                if fill[check[0][0]][check[0][1]]==-1:
+                    c=left(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+                else:
+                    c=up(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+            while(c[1]=="left"):
+                fill[c[0][0]][c[0][1]]="f"
+                check=down([c[0][0],c[0][1]])
+                if fill[check[0][0]][check[0][1]]==-1:
+                    c=down(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+                else:
+                    c=left(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+            while(c[1]=="down"):
+                fill[c[0][0]][c[0][1]]="f"
+                check=right([c[0][0],c[0][1]])
+                if fill[check[0][0]][check[0][1]]==-1:
+                    c=right(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+                else:
+                    c=down(c[0])
+                    fill[c[0][0]][c[0][1]]="f"
+                    ans.append(c[0])
+            counter+=1
+    except IndexError:
+        newans=[]
+        #
+        fill=[[" " for i in range(n)] for i in range(n)]
+        #
+        for elem in ans:
+            if elem[0]>=0 and elem[1]>=0:
+                newans.append(elem)
+        rower=set()
+        for i in range(len(s)):
+            fill[newans[i][0]][newans[i][1]]=s[i]
+            rower.add(newans[i][0])
+        fin=[]
+        for i in range(len(fill)):
+            if i in rower:
+                fin.append("".join(fill[i]))
+            
+        return fin
+    
+            
+        
