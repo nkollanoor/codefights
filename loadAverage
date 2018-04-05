@@ -1,0 +1,68 @@
+### https://codefights.com/challenge/qXezP9Ff9vQoae7Ce/solutions ####
+
+
+
+
+
+
+import subprocess
+import re
+import datetime as dt
+proc=[]
+sys=[]
+x=str(subprocess.check_output(["cat","proc.log"]))
+y=str(subprocess.check_output(["cat","system.log"]))
+temp1=x[1:len(x)-2].split('\\n')[1:]
+temp2=y[2:len(y)-2].split('\\n')
+for i in temp1:
+    proc.append(i.split('|'))
+for i in temp2:
+    sys.append("".join(list(re.findall('[0-9:]',i))))
+
+a=list(map(int,sys[0].split(':')))
+b=list(map(int,sys[1].split(':')))
+start=dt.datetime(9999,9,9,a[0],a[1],a[2])
+finish=dt.datetime(9999,9,9,b[0],b[1],b[2])
+
+##Function to calculate load averages
+def load(l_tminus1,n):
+    l_t=[]
+    for k,alpha in enumerate([0.920043902,0.983471344,0.994459811]):
+        a=alpha*l_tminus1[k]+((1-alpha)*n)
+        l_t.append(a)
+    return l_t
+
+####Dictionary for start and finish times of all the processes
+d={}
+for i in proc:
+    temp=list(map(int,i[1].split(':')))
+    temp=dt.datetime(9999,9,9,temp[0],temp[1],temp[2])
+    if i[0] in d.keys():
+        d[i[0]].append(temp)
+    else:
+        d[i[0]]=[temp]
+l_tminus1=[0,0,0]
+sec=1
+curr=start
+while(curr<finish):
+    prev=start
+    curr=prev+dt.timedelta(seconds=sec)
+    n=0
+    for i in d.keys():
+        if curr>=min(d[i]) and curr<=max(d[i]):
+            n+=1
+    purr=[str(prev+dt.timedelta(seconds=sec-1))[11:]]
+    m=load(l_tminus1,n)
+    m=["{0:.2f}".format(round(i,2)) for i in m]
+    purr.extend(m)
+    print(" ".join(purr))
+    l_tminus1=load(l_tminus1,n)
+    sec+=5
+
+
+
+    
+
+
+
+    
